@@ -1,0 +1,127 @@
+name: General Request
+description: For requests that don't fit other categories
+title: "[GENERAL] "
+labels: ["teacher-request"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## General Request
+        
+        Use this template for requests that don't fit into the other specific categories (activity management, bugs, features, or UI improvements).
+        
+        **For Copilot Agent**: This is a general request that may require analysis to understand the scope and determine the best approach for implementation.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Request Type
+      description: What type of request is this?
+      options:
+        - Documentation update
+        - System configuration change
+        - Data cleanup/maintenance
+        - Performance optimization
+        - Security enhancement
+        - Integration with external system
+        - Training/help with existing features
+        - Other (please specify)
+    validations:
+      required: true
+
+  - type: textarea
+    id: request-description
+    attributes:
+      label: Request Description
+      description: Describe what you need help with
+      placeholder: "Provide a clear description of what you're requesting"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-situation
+    attributes:
+      label: Current Situation
+      description: What's the current state or problem?
+      placeholder: "Describe the current situation that prompted this request"
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired-outcome
+    attributes:
+      label: Desired Outcome
+      description: What would you like to achieve?
+      placeholder: "Describe the end goal or desired result"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency Level
+      description: How urgent is this request?
+      options:
+        - High - Needed immediately
+        - Medium - Needed within a week
+        - Low - Can be done when convenient
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information
+      placeholder: "Background information, constraints, preferences, etc."
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        **For Copilot Agent**: Please follow this process for general requests:
+        
+        1. **Request Analysis**:
+           - Carefully review the request to understand the scope and requirements
+           - Determine if this request should be handled as a bug fix, feature request, or other type of change
+           - Identify any technical constraints or dependencies
+        
+        2. **Scope Assessment**:
+           - Determine what files and components need to be modified
+           - Assess the complexity and time required
+           - Check if the request aligns with existing system architecture
+        
+        3. **Implementation Planning**:
+           - Break down the request into specific, actionable tasks
+           - Plan changes that minimize risk to existing functionality
+           - Consider any testing or validation requirements
+        
+        4. **Implementation**:
+           - Make the requested changes following best practices
+           - Ensure changes are well-documented and maintainable
+           - Test thoroughly to avoid breaking existing functionality
+        
+        5. **Validation**:
+           - Verify that the request has been fulfilled as specified
+           - Test related functionality to ensure no regressions
+           - Provide clear documentation of what was changed
+        
+        ## Implementation Guidelines
+        
+        - **Clarification**: If the request is unclear, ask for clarification in the issue comments
+        - **Alternative Solutions**: If the exact request isn't feasible, suggest alternatives
+        - **Documentation**: Update any relevant documentation if changes affect user workflows
+        - **Testing**: Ensure thorough testing of any changes made
+        
+        ## Common Areas
+        
+        - **Documentation**: `docs/` directory, README files
+        - **Configuration**: Various config files, environment settings
+        - **Database**: `src/backend/database.py` for data-related requests
+        - **API**: `src/backend/routers/` for endpoint modifications
+        - **Frontend**: `src/static/` for user interface changes
+        
+        **Note**: If this request would be better handled as a specific bug report, feature request, or other template type, please suggest the appropriate template to the requester.

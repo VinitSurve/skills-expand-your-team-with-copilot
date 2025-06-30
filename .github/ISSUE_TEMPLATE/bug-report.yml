@@ -1,0 +1,200 @@
+name: Bug Report
+description: Report a bug or technical issue with the system
+title: "[BUG] "
+labels: ["bug", "teacher-request"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Report
+        
+        Use this template to report bugs, technical issues, or unexpected behavior in the Mergington High School Activities system.
+        
+        **For Copilot Agent**: This report describes a technical problem that needs investigation and fixing. Focus on reproducing the issue and implementing a targeted fix.
+
+  - type: dropdown
+    id: bug-category
+    attributes:
+      label: Bug Category
+      description: What type of issue is this?
+      options:
+        - User Interface (display problems, buttons not working)
+        - Login/Authentication (can't log in, session issues)
+        - Data Display (wrong information shown, missing data)
+        - Activity Management (activities not loading, incorrect details)
+        - Registration System (signup/removal not working)
+        - Search/Filter (search not working, filters broken)
+        - Performance (slow loading, timeouts)
+        - Other technical issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-summary
+    attributes:
+      label: Bug Summary
+      description: Briefly describe what's wrong
+      placeholder: "e.g., Activity list doesn't load, login button doesn't work, student names appear twice"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+      placeholder: "Describe what you expected to see or happen"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior
+      description: What actually happens?
+      placeholder: "Describe what actually occurs, including any error messages"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: List the exact steps to trigger this bug
+      placeholder: |
+        1. Go to...
+        2. Click on...
+        3. Enter...
+        4. See error/problem
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-messages
+    attributes:
+      label: Error Messages
+      description: Copy and paste any error messages you see
+      placeholder: "Paste the exact error text here"
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does this happen?
+      description: Is this bug consistent or intermittent?
+      options:
+        - Always (every time I try)
+        - Often (most of the time)
+        - Sometimes (occasionally)
+        - Rarely (happened once or twice)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: Which web browser are you using?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: other-browser
+    attributes:
+      label: Other Browser
+      description: If you selected "Other" above, specify which browser
+      placeholder: "Browser name and version"
+
+  - type: dropdown
+    id: device-type
+    attributes:
+      label: Device Type
+      description: What device are you using?
+      options:
+        - Desktop/Laptop Computer
+        - Tablet
+        - Mobile Phone
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help debug this issue
+      placeholder: "e.g., This started happening after..., Only occurs when..., etc."
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact Level
+      description: How much does this bug affect your work?
+      options:
+        - High - Blocks critical tasks, can't do my job
+        - Medium - Workaround exists but it's inconvenient
+        - Low - Minor annoyance, doesn't significantly impact work
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        **For Copilot Agent**: Please implement the following debugging and fix process:
+        
+        1. **Bug Reproduction**:
+           - Follow the exact steps provided to reproduce the issue
+           - Verify the bug exists in the current codebase
+           - Document any additional conditions needed to trigger the bug
+        
+        2. **Root Cause Analysis**:
+           - Check browser developer console for JavaScript errors
+           - Review server logs for API errors
+           - Examine relevant code sections for logical errors
+           - Identify the specific component/function causing the issue
+        
+        3. **Fix Implementation**:
+           - Make minimal changes to address the root cause
+           - Ensure fix doesn't break existing functionality
+           - Add appropriate error handling if missing
+           - Update any related validation or user feedback
+        
+        4. **Testing Verification**:
+           - Test the original reproduction steps to confirm fix
+           - Test related functionality to ensure no regressions
+           - Test edge cases that might trigger similar issues
+           - Verify fix works across different browsers/devices if relevant
+        
+        ## Implementation Hints
+        
+        - Start with browser developer tools (F12) to check for console errors
+        - Check network tab for failed API requests
+        - Review the specific files/functions mentioned in the bug report
+        - Look for JavaScript errors in `src/static/app.js`
+        - Check API endpoints in `src/backend/routers/`
+        - Verify database operations in `src/backend/database.py`
+        - Consider race conditions or timing issues for intermittent bugs
+        
+        ## Common Bug Locations
+        
+        - **UI Issues**: `src/static/app.js`, `src/static/styles.css`, `src/static/index.html`
+        - **API Issues**: `src/backend/routers/activities.py`, `src/backend/routers/auth.py`
+        - **Data Issues**: `src/backend/database.py`
+        - **Authentication**: Login/logout functionality, session management
+        - **Registration**: Student signup/removal API endpoints
+        
+        ## Testing Requirements
+        
+        - Reproduce the bug with provided steps
+        - Verify fix resolves the issue
+        - Test that no new bugs are introduced
+        - Consider cross-browser compatibility if UI-related

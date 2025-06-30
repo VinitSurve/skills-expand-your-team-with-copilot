@@ -1,0 +1,206 @@
+name: UI/UX Improvement
+description: Request improvements to the user interface or user experience
+title: "[UI/UX] "
+labels: ["enhancement", "ui-ux", "frontend", "teacher-request"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## UI/UX Improvement Request
+        
+        Use this template to request improvements to the user interface, layout, or user experience of the activities system.
+        
+        **For Copilot Agent**: This request focuses on improving the visual design, usability, or user experience of the application. Focus on frontend changes that enhance usability.
+
+  - type: dropdown
+    id: improvement-type
+    attributes:
+      label: Type of Improvement
+      description: What aspect of the interface needs improvement?
+      options:
+        - Visual Design (colors, fonts, spacing, styling)
+        - Layout/Organization (page structure, content arrangement)
+        - Navigation (menus, buttons, links)
+        - Responsive Design (mobile/tablet compatibility)
+        - Accessibility (screen readers, keyboard navigation)
+        - User Workflow (making tasks easier/faster)
+        - Form Design (input fields, validation, feedback)
+        - Data Display (tables, lists, cards)
+        - Interactive Elements (hover effects, animations)
+        - Other interface improvement
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-area
+    attributes:
+      label: Affected Area
+      description: Which part of the system needs improvement?
+      options:
+        - Main activity list page
+        - Activity registration modal
+        - Teacher login interface
+        - Activity filters and search
+        - Student participant lists
+        - Overall page layout
+        - Navigation/header area
+        - Footer area
+        - Error messages/feedback
+        - Entire application
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-problem
+    attributes:
+      label: Current Problem
+      description: What's currently difficult or confusing about the interface?
+      placeholder: "Describe what makes the current interface hard to use or unattractive"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-improvement
+    attributes:
+      label: Proposed Improvement
+      description: How would you like the interface to be improved?
+      placeholder: "Describe your vision for how this should look or work better"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-benefits
+    attributes:
+      label: Expected Benefits
+      description: How would this improvement help users?
+      placeholder: "e.g., Faster task completion, easier to find information, better mobile experience, etc."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device-focus
+    attributes:
+      label: Device Priority
+      description: Which devices should this improvement prioritize?
+      options:
+        - Desktop computers (primary focus)
+        - Mobile phones (primary focus)
+        - Tablets (primary focus)
+        - All devices equally
+        - Current device support is fine
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples-inspiration
+    attributes:
+      label: Examples or Inspiration
+      description: Any examples of similar interfaces that work well?
+      placeholder: "Describe or provide links to examples of good UI/UX for similar functionality"
+
+  - type: checkboxes
+    id: specific-elements
+    attributes:
+      label: Specific Elements to Improve
+      description: Select all interface elements that need attention
+      options:
+        - label: Color scheme/theme
+        - label: Typography (fonts, text sizes)
+        - label: Button design and placement
+        - label: Form layout and styling
+        - label: Activity card design
+        - label: Header/navigation bar
+        - label: Modal dialog design
+        - label: Error message appearance
+        - label: Loading states/feedback
+        - label: Spacing and alignment
+        - label: Icons and visual indicators
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Priority Level
+      description: How important is this improvement?
+      options:
+        - High - Current interface significantly hinders work
+        - Medium - Would noticeably improve user experience  
+        - Low - Minor enhancement that would be nice to have
+    validations:
+      required: true
+
+  - type: textarea
+    id: accessibility-concerns
+    attributes:
+      label: Accessibility Considerations
+      description: Any specific accessibility needs to consider?
+      placeholder: "e.g., Text size, color contrast, keyboard navigation, screen reader support"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        **For Copilot Agent**: Please implement the following UI/UX improvements:
+        
+        1. **Analysis & Planning**:
+           - Review the current interface implementation in the affected areas
+           - Identify specific pain points mentioned in the request
+           - Plan changes that maintain consistency with existing design patterns
+           - Consider responsive design implications
+        
+        2. **Visual Design Updates**:
+           - Modify CSS in `src/static/styles.css` for styling improvements
+           - Ensure color contrast meets accessibility standards
+           - Maintain visual hierarchy and readability
+           - Update typography if needed for better legibility
+        
+        3. **Layout Improvements**:
+           - Adjust HTML structure in `src/static/index.html` if needed
+           - Improve spacing, alignment, and visual organization
+           - Ensure responsive behavior across device sizes
+           - Optimize layout for the primary use cases described
+        
+        4. **Interactive Improvements**:
+           - Enhance user feedback for actions (hover states, loading indicators)
+           - Improve form validation and error message display
+           - Add appropriate focus states for keyboard navigation
+           - Update JavaScript in `src/static/app.js` for better interactions
+        
+        5. **User Experience Flow**:
+           - Streamline common tasks based on the improvement request
+           - Reduce cognitive load and interface complexity
+           - Ensure logical task flow and intuitive navigation
+           - Provide clear visual feedback for user actions
+        
+        ## Implementation Guidelines
+        
+        - **Consistency**: Maintain design consistency throughout the application
+        - **Accessibility**: Follow web accessibility best practices (WCAG guidelines)
+        - **Performance**: Ensure changes don't negatively impact page load times
+        - **Cross-browser**: Test improvements in major browsers
+        - **Mobile-first**: Consider mobile experience in all design decisions
+        
+        ## Files to Modify
+        
+        - `src/static/styles.css` - Primary file for visual improvements
+        - `src/static/index.html` - Structure changes if needed
+        - `src/static/app.js` - Interactive behavior enhancements
+        - Consider if any backend templates need updates
+        
+        ## Testing Requirements
+        
+        - Test the improved interface on different screen sizes
+        - Verify keyboard navigation still works properly
+        - Check color contrast ratios for accessibility
+        - Ensure all interactive elements provide appropriate feedback
+        - Test with different browsers if changes are significant
+        
+        ## Design Principles to Follow
+        
+        - **Simplicity**: Keep the interface clean and uncluttered
+        - **Clarity**: Make actions and information clearly identifiable
+        - **Consistency**: Use consistent patterns and styling
+        - **Feedback**: Provide clear feedback for user actions
+        - **Efficiency**: Help users complete tasks quickly and easily
