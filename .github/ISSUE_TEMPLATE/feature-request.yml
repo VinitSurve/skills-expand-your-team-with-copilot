@@ -1,0 +1,182 @@
+name: Feature Request
+description: Request a new feature or enhancement for the system
+title: "[FEATURE] "
+labels: ["enhancement", "feature-request", "teacher-request"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        
+        Use this template to request new features or enhancements to improve the Mergington High School Activities system.
+        
+        **For Copilot Agent**: This request describes new functionality that should be added to the system. Focus on understanding requirements and implementing a clean, maintainable solution.
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: What type of feature is this?
+      options:
+        - Activity Management (new ways to manage activities)
+        - Student Management (new registration/tracking features)
+        - User Interface (better layout, new views, navigation)
+        - Reporting (activity reports, student lists, statistics)
+        - Communication (notifications, email features)
+        - Search/Filter (better search, new filter options)
+        - Calendar/Scheduling (calendar views, scheduling tools)
+        - Authentication/Security (new login features, permissions)
+        - Data Import/Export (spreadsheet support, data backup)
+        - Other enhancement
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: Describe the new feature you'd like to see
+      placeholder: "What functionality would you like added to the system?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-statement
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve?
+      placeholder: "Describe the current limitation or challenge this feature would address"
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: How would you use this feature?
+      placeholder: "Describe a typical scenario where you would use this feature"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: How should this feature work?
+      placeholder: "Describe step-by-step how the feature should behave"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-type
+    attributes:
+      label: Primary Users
+      description: Who would primarily use this feature?
+      options:
+        - Teachers (activity management)
+        - Students (viewing/registration)
+        - Administrators (system management)
+        - All users
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this feature to your work?
+      options:
+        - High - Would significantly improve daily workflow
+        - Medium - Would be helpful but not critical
+        - Low - Nice to have enhancement
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternative-solutions
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered other ways to solve this problem?
+      placeholder: "Describe any workarounds you currently use or other approaches you've considered"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help implement this feature
+      placeholder: "Examples from other systems, mockups, specific requirements, etc."
+
+  - type: checkboxes
+    id: complexity-acceptance
+    attributes:
+      label: Implementation Complexity
+      description: Please acknowledge your understanding
+      options:
+        - label: I understand this feature may require significant development time
+          required: true
+        - label: I'm open to discussing simpler alternatives if the full feature is too complex
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        **For Copilot Agent**: Please implement the following development process:
+        
+        1. **Requirements Analysis**:
+           - Break down the feature request into specific, implementable requirements
+           - Identify all components that need to be modified (frontend, backend, database)
+           - Consider integration points with existing functionality
+           - Assess technical feasibility and potential challenges
+        
+        2. **Design Planning**:
+           - Plan the user interface changes needed
+           - Design any new API endpoints or database schema changes
+           - Consider user experience and workflow integration
+           - Plan for proper error handling and validation
+        
+        3. **Implementation Strategy**:
+           - Start with minimal viable implementation
+           - Follow existing code patterns and architecture
+           - Ensure new feature doesn't break existing functionality
+           - Add appropriate comments and documentation
+        
+        4. **Feature Development**:
+           - Implement backend changes first (API, database)
+           - Add frontend functionality and UI elements
+           - Integrate with existing authentication and permissions
+           - Add proper input validation and error handling
+        
+        5. **Testing and Validation**:
+           - Test the feature with various user scenarios
+           - Verify integration with existing system components
+           - Check for edge cases and error conditions
+           - Ensure responsive design if UI changes are involved
+        
+        ## Implementation Guidelines
+        
+        - **Code Quality**: Follow existing patterns in the codebase
+        - **User Experience**: Keep the interface simple and intuitive
+        - **Security**: Maintain proper authentication/authorization
+        - **Performance**: Consider impact on system performance
+        - **Compatibility**: Ensure cross-browser compatibility for UI changes
+        
+        ## Common Implementation Areas
+        
+        - **Database**: `src/backend/database.py` - New data structures or fields
+        - **API**: `src/backend/routers/` - New endpoints or enhanced existing ones
+        - **Frontend**: `src/static/app.js` - New JavaScript functionality
+        - **UI**: `src/static/index.html`, `src/static/styles.css` - Interface changes
+        - **Authentication**: Ensure proper permission handling
+        
+        ## Delivery Expectations
+        
+        - Working implementation of the requested feature
+        - Integration with existing system without breaking current functionality
+        - Basic error handling and user feedback
+        - Brief documentation of how to use the new feature
+        
+        **Note**: If the full feature request is too complex, please implement a simplified version that addresses the core problem statement and suggest the approach for future enhancements.

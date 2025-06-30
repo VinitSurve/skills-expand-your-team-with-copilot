@@ -1,0 +1,142 @@
+name: Add New Activity
+description: Request to add a new extracurricular activity to the system
+title: "[ACTIVITY] Add new activity: "
+labels: ["enhancement", "activity-management", "teacher-request"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Add New Activity Request
+        
+        Use this template to request adding a new extracurricular activity to the Mergington High School system.
+        
+        **For Copilot Agent**: This request involves adding a new activity to the database with all required details including scheduling, capacity, and participant management.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: What is the name of the new activity?
+      placeholder: "e.g., Photography Club, Science Olympiad, Drama Club"
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity-description
+    attributes:
+      label: Activity Description
+      description: Provide a detailed description of what this activity involves
+      placeholder: "Describe the purpose, goals, and what students will do in this activity"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity-category
+    attributes:
+      label: Activity Category
+      description: What type of activity is this?
+      options:
+        - Academic
+        - Technology
+        - Arts
+        - Sports
+        - Community Service
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: schedule-days
+    attributes:
+      label: Meeting Days
+      description: Which days will this activity meet?
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+
+  - type: input
+    id: start-time
+    attributes:
+      label: Start Time
+      description: What time does the activity start?
+      placeholder: "e.g., 3:15 PM, 7:00 AM"
+    validations:
+      required: true
+
+  - type: input
+    id: end-time
+    attributes:
+      label: End Time
+      description: What time does the activity end?
+      placeholder: "e.g., 4:45 PM, 8:00 AM"
+    validations:
+      required: true
+
+  - type: input
+    id: max-participants
+    attributes:
+      label: Maximum Participants
+      description: How many students can participate in this activity?
+      placeholder: "e.g., 15, 20, 25"
+    validations:
+      required: true
+
+  - type: input
+    id: teacher-sponsor
+    attributes:
+      label: Teacher Sponsor
+      description: Which teacher will be sponsoring this activity?
+      placeholder: "e.g., Ms. Rodriguez, Mr. Chen"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-requirements
+    attributes:
+      label: Additional Requirements or Notes
+      description: Any special requirements, equipment needed, or other important information?
+      placeholder: "e.g., Students need to bring their own supplies, requires parental permission form, etc."
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        **For Copilot Agent**: Please implement the following:
+        
+        1. **Database Update**: Add the new activity to the `initial_activities` dictionary in `src/backend/database.py`
+        2. **Activity Structure**: Include all required fields:
+           - `description`: Full activity description
+           - `schedule`: Human-readable schedule string
+           - `schedule_details`: Structured data with days array, start_time, and end_time in 24-hour format
+           - `max_participants`: Integer value for capacity
+           - `participants`: Initialize as empty array
+        3. **Time Format**: Convert 12-hour time format to 24-hour format for schedule_details
+        4. **Validation**: Ensure the activity name is unique and doesn't conflict with existing activities
+        5. **Testing**: Verify the new activity appears in the frontend activity list
+        
+        ## Implementation Hints
+        
+        - Follow the exact format of existing activities in the database
+        - Use the `getActivityType()` function logic to ensure proper categorization
+        - Schedule string should be formatted as: "Days, Start Time - End Time" (e.g., "Mondays and Fridays, 3:15 PM - 4:45 PM")
+        - 24-hour time format examples: "15:15" for 3:15 PM, "07:00" for 7:00 AM
+        
+        ## Files to Modify
+        
+        - `src/backend/database.py` - Add activity to initial_activities dictionary
+        - Test by running the application and checking the frontend displays the new activity
+        
+        ## Limitations
+        
+        - Activity names must be unique
+        - Times must be valid 24-hour format
+        - Maximum participants must be a positive integer
+        - At least one meeting day must be selected

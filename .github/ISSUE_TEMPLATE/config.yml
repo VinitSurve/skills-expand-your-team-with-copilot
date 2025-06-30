@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation & Development Guide
+    url: https://github.com/VinitSurve/skills-expand-your-team-with-copilot/blob/main/docs/how-to-develop.md
+    about: View development setup instructions and API documentation
+  - name: 💬 General Discussion
+    url: https://github.com/VinitSurve/skills-expand-your-team-with-copilot/discussions
+    about: Ask questions or discuss ideas that don't fit the issue templates

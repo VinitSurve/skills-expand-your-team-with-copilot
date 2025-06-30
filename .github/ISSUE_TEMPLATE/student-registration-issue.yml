@@ -1,0 +1,194 @@
+name: Student Registration Issue
+description: Report problems with student enrollment in activities
+title: "[REGISTRATION] Student registration issue: "
+labels: ["bug", "registration", "teacher-request"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Student Registration Issue Report
+        
+        Use this template to report problems with student registration or enrollment in activities.
+        
+        **For Copilot Agent**: This request typically involves fixing registration issues, API problems, or data inconsistencies in the student enrollment system.
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Type of Registration Issue
+      description: What kind of problem are you experiencing?
+      options:
+        - Cannot register student (error occurs)
+        - Student appears registered but isn't in the list
+        - Need to remove student from activity
+        - Student registered multiple times
+        - Activity shows full but has available spots
+        - Student cannot be found in system
+        - Other registration problem
+    validations:
+      required: true
+
+  - type: input
+    id: student-email
+    attributes:
+      label: Student Email
+      description: Email address of the affected student
+      placeholder: "student@mergington.edu"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity-name
+    attributes:
+      label: Affected Activity
+      description: Which activity is having the registration issue?
+      options:
+        - Chess Club
+        - Programming Class
+        - Math Competition Team
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Manga Maniacs
+        - Art Club
+        - Creative Writing Workshop
+        - Environmental Club
+        - Model UN
+        - Physics Study Group
+        - Spanish Conversation Circle
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: other-activity
+    attributes:
+      label: Other Activity Name
+      description: If you selected "Other" above, specify the activity name
+      placeholder: "Enter the exact name of the activity"
+
+  - type: textarea
+    id: error-description
+    attributes:
+      label: Detailed Problem Description
+      description: Describe exactly what happens when you try to register the student
+      placeholder: "e.g., Error message appears, system hangs, student doesn't appear in list, etc."
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-message
+    attributes:
+      label: Error Message (if any)
+      description: Copy and paste any error messages you see
+      placeholder: "Paste the exact error message here"
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: What steps did you take that led to this problem?
+      placeholder: |
+        1. Logged in as teacher
+        2. Clicked on activity
+        3. Entered student email
+        4. Clicked register
+        5. Error occurred
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser-used
+    attributes:
+      label: Browser Used
+      description: Which web browser were you using?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
+        - Not applicable
+
+  - type: checkboxes
+    id: attempted-solutions
+    attributes:
+      label: What have you already tried?
+      description: Select all troubleshooting steps you've attempted
+      options:
+        - label: Refreshed the browser page
+        - label: Tried a different browser
+        - label: Logged out and back in
+        - label: Checked if student email is correct
+        - label: Verified activity has available spots
+        - label: Tried registering a different student
+        - label: Waited and tried again later
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency Level
+      description: How urgent is this issue?
+      options:
+        - High - Activity starts soon/deadline approaching
+        - Medium - Needs to be fixed this week
+        - Low - Can wait for next update cycle
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        **For Copilot Agent**: Please investigate and fix the following:
+        
+        1. **Issue Diagnosis**: 
+           - Check the registration API endpoints in `src/backend/routers/activities.py`
+           - Verify database state for the affected student and activity
+           - Check for authentication issues in the signup process
+        
+        2. **Data Validation**:
+           - Ensure student email format is valid
+           - Verify activity exists and has correct structure
+           - Check participant array limits vs max_participants
+           - Validate teacher authentication is working
+        
+        3. **API Functionality**:
+           - Test `/activities/{activity_name}/signup` endpoint
+           - Test `/activities/{activity_name}/unregister` endpoint
+           - Verify proper error handling and user feedback
+        
+        4. **Frontend Integration**:
+           - Check JavaScript registration form submission
+           - Verify error messages are displayed properly
+           - Ensure activity list refreshes after registration changes
+        
+        5. **Resolution Verification**:
+           - Test the specific scenario described in the issue
+           - Verify student can be successfully registered/unregistered
+           - Confirm proper error handling for edge cases
+        
+        ## Implementation Hints
+        
+        - Check `handleUnregister()` and signup form event listener in `src/static/app.js`
+        - Validate teacher authentication in `signup_for_activity()` function
+        - Look for duplicate entries in participants array
+        - Check if MongoDB connection and collection operations work correctly
+        - Verify email validation and error message display
+        
+        ## Files to Check/Modify
+        
+        - `src/backend/routers/activities.py` - Registration API endpoints
+        - `src/static/app.js` - Frontend registration handling
+        - `src/backend/database.py` - Database state and initialization
+        - Browser developer console for JavaScript errors
+        
+        ## Testing Requirements
+        
+        - Test registration with valid student email
+        - Test registration with invalid email format
+        - Test registration when activity is full
+        - Test unregistration functionality
+        - Verify teacher authentication requirements
